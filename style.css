@@ -1015,3 +1015,116 @@ body {
         overflow-y: auto;
     }
 }
+/* Add this CSS to your existing stylesheet - don't replace anything, just add this */
+
+/* Mobile Fix for Text Visibility */
+@media (max-width: 768px) {
+    /* Override hero section to ensure proper height and scrolling */
+    .hero {
+        min-height: auto !important; /* Remove fixed height */
+        height: auto !important;
+        padding: 100px 0 50px 0 !important; /* More top padding for navbar */
+        display: block !important; /* Change from flex to block */
+        align-items: unset !important;
+    }
+
+    .hero-container {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 0 var(--spacing-md) !important;
+    }
+
+    .hero-content {
+        display: block !important; /* Change from grid to block */
+        grid-template-columns: unset !important;
+        gap: var(--spacing-lg) !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* Ensure all text elements are visible */
+    .hero-title,
+    .hero-subtitle,
+    .hero-description {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: var(--spacing-lg) !important;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+        color: var(--text-secondary) !important;
+    }
+
+    .hero-description {
+        font-size: 1rem !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.6 !important;
+        padding: 0 1rem !important;
+    }
+
+    .hero-buttons {
+        display: block !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .hero-buttons .btn {
+        display: block !important;
+        margin: 0 auto 1rem auto !important;
+        width: 200px !important;
+    }
+
+    .social-links {
+        justify-content: center !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .hero-image {
+        text-align: center !important;
+        margin-top: 2rem !important;
+    }
+
+    /* Ensure body can scroll */
+    body {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+
+    html {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .hero {
+        padding: 90px 0 40px 0 !important;
+    }
+
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+    }
+
+    .hero-description {
+        font-size: 0.95rem !important;
+        padding: 0 0.5rem !important;
+    }
+}
