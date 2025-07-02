@@ -805,7 +805,92 @@ body {
 }
 
 /* Mobile Responsive */
+/* Add these CSS rules to fix mobile text visibility issues */
+
+/* Ensure hero section has proper height and scrolling on mobile */
 @media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 40px 0; /* Add padding to account for fixed navbar */
+        display: flex;
+        align-items: flex-start; /* Change from center to flex-start */
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-2xl);
+        width: 100%;
+        padding-top: 20px; /* Add some top padding */
+    }
+
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-lg); /* Increase margin */
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-lg);
+        display: block; /* Ensure it's visible */
+        opacity: 1; /* Force visibility */
+    }
+
+    .hero-description {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-xl);
+        padding: 0 var(--spacing-md); /* Add horizontal padding */
+        display: block; /* Ensure it's visible */
+        opacity: 1; /* Force visibility */
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .hero-image {
+        order: -1; /* Move image to top */
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .image-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    /* Fix container padding for mobile */
+    .container {
+        padding: 0 var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-container {
+        padding: 0 var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Ensure text elements are not hidden */
+    .hero-content > * {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Fix navigation for mobile */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -817,6 +902,7 @@ body {
         transition: var(--transition-base);
         box-shadow: var(--shadow-medium);
         padding: var(--spacing-xl) 0;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -825,6 +911,7 @@ body {
 
     .hamburger {
         display: flex;
+        z-index: 1001;
     }
 
     .hamburger.active span:nth-child(2) {
@@ -839,26 +926,11 @@ body {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: var(--spacing-2xl);
+    .section-title {
+        font-size: var(--font-size-2xl);
     }
 
-    .hero-title {
-        font-size: var(--font-size-3xl);
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .image-container {
-        width: 280px;
-        height: 280px;
-    }
-
+    /* Fix other sections for mobile scrolling */
     .about-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
@@ -878,14 +950,6 @@ body {
         gap: var(--spacing-md);
     }
 
-    .container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .section-title {
-        font-size: var(--font-size-2xl);
-    }
-
     .timeline-item {
         padding-left: 60px;
     }
@@ -899,14 +963,30 @@ body {
     }
 }
 
+/* Extra small screens */
 @media (max-width: 480px) {
+    .hero {
+        padding: 70px 0 30px 0;
+    }
+
     .hero-title {
         font-size: var(--font-size-2xl);
+        line-height: 1.3;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .hero-description {
+        font-size: var(--font-size-sm);
+        line-height: 1.6;
     }
 
     .btn {
         padding: var(--spacing-sm) var(--spacing-lg);
         font-size: var(--font-size-sm);
+        width: 200px; /* Fixed width for better appearance */
     }
 
     .image-container {
@@ -922,5 +1002,16 @@ body {
     .contact-item {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Ensure body can scroll properly */
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 }
