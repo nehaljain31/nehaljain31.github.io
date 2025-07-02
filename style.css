@@ -63,6 +63,7 @@ html {
 }
 
 body {
+    padding-top: 80px;
     font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-primary);
@@ -192,7 +193,8 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px) !important; /* Change this line */
+    padding: 80px 0 50px 0 !important; /* Change this line */
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -813,6 +815,11 @@ body {
 /* Mobile Fix for Text Visibility */
 @media (max-width: 768px) {
     /* Override hero section to ensure proper height and scrolling */
+    body, html {
+        overflow-x: hidden;
+        overflow-y: auto !important; /* Forces vertical scrolling */
+        height: auto !important; /* Prevents viewport locking */
+    }
     .hero {
         min-height: auto !important; /* Remove fixed height */
         height: auto !important;
