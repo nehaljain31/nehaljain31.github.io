@@ -63,7 +63,6 @@ html {
 }
 
 body {
-
     font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-primary);
@@ -809,117 +808,210 @@ body {
 /* Add these CSS rules to fix mobile text visibility issues */
 
 /* Ensure hero section has proper height and scrolling on mobile */
-/* Add this CSS to your existing stylesheet - don't replace anything, just add this */
-
-/* Mobile Fix for Text Visibility */
 @media (max-width: 768px) {
-    /* Override hero section to ensure proper height and scrolling */
-    
     .hero {
-        min-height: auto !important; /* Remove fixed height */
-        height: auto !important;
-        padding: 100px 0 50px 0 !important; /* More top padding for navbar */
-        display: block !important; /* Change from flex to block */
-        align-items: unset !important;
-    }
-
-    .hero-container {
-        height: auto !important;
-        min-height: auto !important;
-        padding: 0 var(--spacing-md) !important;
+        min-height: 100vh;
+        padding: 80px 0 40px 0; /* Add padding to account for fixed navbar */
+        display: flex;
+        align-items: flex-start; /* Change from center to flex-start */
+        justify-content: flex-start;
     }
 
     .hero-content {
-        display: block !important; /* Change from grid to block */
-        grid-template-columns: unset !important;
-        gap: var(--spacing-lg) !important;
-        height: auto !important;
-        min-height: auto !important;
-    }
-
-    /* Ensure all text elements are visible */
-    .hero-title,
-    .hero-subtitle,
-    .hero-description {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: static !important;
-        width: 100% !important;
-        margin-bottom: var(--spacing-lg) !important;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-2xl);
+        width: 100%;
+        padding-top: 20px; /* Add some top padding */
     }
 
     .hero-title {
-        font-size: 2rem !important;
-        text-align: center !important;
-        margin-bottom: 1rem !important;
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-lg); /* Increase margin */
     }
 
     .hero-subtitle {
-        font-size: 1.2rem !important;
-        text-align: center !important;
-        margin-bottom: 1rem !important;
-        color: var(--text-secondary) !important;
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-lg);
+        display: block; /* Ensure it's visible */
+        opacity: 1; /* Force visibility */
     }
 
     .hero-description {
-        font-size: 1rem !important;
-        text-align: center !important;
-        margin-bottom: 2rem !important;
-        line-height: 1.6 !important;
-        padding: 0 1rem !important;
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-xl);
+        padding: 0 var(--spacing-md); /* Add horizontal padding */
+        display: block; /* Ensure it's visible */
+        opacity: 1; /* Force visibility */
     }
 
     .hero-buttons {
-        display: block !important;
-        text-align: center !important;
-        margin-bottom: 2rem !important;
-    }
-
-    .hero-buttons .btn {
-        display: block !important;
-        margin: 0 auto 1rem auto !important;
-        width: 200px !important;
-    }
-
-    .social-links {
-        justify-content: center !important;
-        margin-bottom: 2rem !important;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
     }
 
     .hero-image {
-        text-align: center !important;
-        margin-top: 2rem !important;
+        order: -1; /* Move image to top */
+        margin-bottom: var(--spacing-lg);
     }
 
-    /* Ensure body can scroll */
-    body {
-        overflow-y: auto !important;
-        height: auto !important;
+    .image-container {
+        width: 280px;
+        height: 280px;
     }
 
-    html {
-        overflow-y: auto !important;
-        height: auto !important;
+    /* Fix container padding for mobile */
+    .container {
+        padding: 0 var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-container {
+        padding: 0 var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Ensure text elements are not hidden */
+    .hero-content > * {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    /* Fix navigation for mobile */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        text-align: center;
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-medium);
+        padding: var(--spacing-xl) 0;
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    /* Fix other sections for mobile scrolling */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+    }
+
+    .education-timeline::before {
+        left: 20px;
+    }
+
+    .timeline-dot {
+        left: 10px;
     }
 }
 
-/* For very small screens */
+/* Extra small screens */
 @media (max-width: 480px) {
     .hero {
-        padding: 90px 0 40px 0 !important;
+        padding: 70px 0 30px 0;
     }
 
     .hero-title {
-        font-size: 1.8rem !important;
+        font-size: var(--font-size-2xl);
+        line-height: 1.3;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem !important;
+        font-size: var(--font-size-base);
     }
 
     .hero-description {
-        font-size: 0.95rem !important;
-        padding: 0 0.5rem !important;
+        font-size: var(--font-size-sm);
+        line-height: 1.6;
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-sm);
+        width: 200px; /* Fixed width for better appearance */
+    }
+
+    .image-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .project-card,
+    .experience-card {
+        padding: var(--spacing-lg);
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Ensure body can scroll properly */
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 }
